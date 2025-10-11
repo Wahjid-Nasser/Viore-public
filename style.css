@@ -1,0 +1,244 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  perspective: 800px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle at 50% -25%, #0b1220 0%, #020617 90%);
+  font-family: 'Inter', sans-serif;
+  color: #d1d5db;
+  overflow: hidden;
+  animation: fadeInBody 1.2s ease forwards;
+}
+
+@keyframes fadeInBody {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ========================= */
+/* ======= CONTAINER ======= */
+/* ========================= */
+.container {
+  text-align: center;
+  transform: translateY(-3%);
+}
+
+/* ========================= */
+/* ======= LOGO AREA ======= */
+/* ========================= */
+.logo-container {
+  --logo-size: 185px;
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.8rem;
+  animation: logoReveal 1.6s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+  transform-style: preserve-3d;
+  transition: transform 0.4s ease-out;
+  will-change: transform;
+}
+
+@keyframes logoReveal {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Parallax effect on hover or cursor move */
+body:hover .logo-container {
+  transform: rotateX(2deg) rotateY(-2deg);
+}
+
+/* Ambient glow behind the logo */
+.logo-container::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(70,120,200,0.25) 0%,
+    rgba(40,80,160,0.10) 40%,
+    rgba(2,6,23,0) 85%
+  );
+  filter: blur(90px);
+  opacity: 0.85;
+  z-index: 0;
+  animation: shimmer 8s ease-in-out infinite alternate;
+}
+
+/* Dark base overlay to restore shadow depth */
+.logo-container::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: calc(var(--logo-size) * 1.05);
+  height: calc(var(--logo-size) * 0.7);
+  transform: translate(-50%, -38%);
+  border-radius: 50% / 60% 60% 40% 40%;
+  pointer-events: none;
+  z-index: 3;
+  background: radial-gradient(
+    ellipse at 50% 80%,
+    rgba(0,0,0,0.55) 0%,
+    rgba(0,0,0,0.35) 40%,
+    rgba(0,0,0,0.00) 75%
+  );
+  filter: blur(16px);
+  opacity: 0.9;
+  mix-blend-mode: multiply;
+}
+
+/* Glow animation behind */
+@keyframes shimmer {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.85; }
+  50% { transform: translate(-50%, -51%) scale(1.03); opacity: 0.95; }
+}
+
+/* ========================= */
+/* ======= LOGO IMAGE ====== */
+/* ========================= */
+.logo {
+  position: relative;
+  display: block;              /* removes baseline whitespace below image */
+  width: var(--logo-size);
+  z-index: 2;
+  transform-origin: center center;
+  filter: drop-shadow(0 0 35px rgba(80,130,220,0.25));
+  image-rendering: -webkit-optimize-contrast;
+  -webkit-transform: translateZ(0);
+  margin-bottom: -12px;        /* pulls text upward for tighter alignment */
+  animation:
+    pulseGlow 6s ease-in-out infinite,
+    breathe 8s ease-in-out infinite;
+}
+
+
+/* Glow syncs with breathing intensity */
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 35px rgba(80,130,220,0.25));
+    opacity: 0.9;
+  }
+  50% {
+    filter: drop-shadow(0 0 60px rgba(90,150,255,0.45));
+    opacity: 1;
+  }
+}
+
+/* Breathing motion (slightly tied to glow rhythm) */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1) translateY(4px);
+  }
+  50% {
+    transform: scale(1.04) translateY(4px);
+  }
+}
+
+/* ========================= */
+/* ======= TEXT AREA ======= */
+/* ========================= */
+.brand {
+  font-size: 3rem;
+  font-weight: 600;
+  color: #cbd5e1;
+  letter-spacing: 0.07em;
+  margin-top: 0.1rem;
+  opacity: 0;
+  animation: textReveal 1.8s ease forwards 0.8s; /* slightly delayed */
+}
+
+.tagline {
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: #b3bdcb;
+  margin-top: 0.7rem;
+  line-height: 1.4;
+  text-shadow: 0 0 10px rgba(90,130,200,0.15);
+  opacity: 0;
+  animation: textReveal 1.8s ease forwards 1.4s; /* delayed after logo */
+}
+
+.subline {
+  font-size: 0.95rem;
+  color: #9aa4b3;
+  margin-top: 0.45rem;
+  opacity: 0;
+  animation: textReveal 1.8s ease forwards 1.9s;
+}
+
+@keyframes textReveal {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========================= */
+/* ======= BUTTONS ========= */
+/* ========================= */
+.buttons {
+  margin-top: 2.2rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  opacity: 0;
+  animation: textReveal 1.8s ease forwards 2.4s; /* staggered for cinematic entry */
+}
+
+.btn {
+  font-size: 0.95rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-outline {
+  border: 1px solid rgba(120,130,150,0.4);
+  color: #e2e8f0;
+}
+
+.btn-outline:hover {
+  background: rgba(80,100,140,0.1);
+  border-color: rgba(130,150,190,0.6);
+  box-shadow: 0 0 15px rgba(100,140,220,0.2);
+}
+
+.btn-filled {
+  background: linear-gradient(135deg, #253245, #354760);
+  color: #f1f5f9;
+  box-shadow: 0 0 20px rgba(70,120,200,0.25);
+}
+
+.btn-filled:hover {
+  background: linear-gradient(135deg, #2f3e57, #42577b);
+  box-shadow: 0 0 35px rgba(90,150,255,0.3);
+  transform: translateY(-1px);
+}
+
+.btn-filled::after {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(90,150,255,0.25) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.btn-filled:hover::after {
+  opacity: 0.4;
+}

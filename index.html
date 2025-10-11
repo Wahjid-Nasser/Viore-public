@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viore – The Intelligence Layer for Video</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="logo-container">
+      <div class="logo-glow"></div>
+      <img src="/logos/eye-logo.png" alt="Viore Eye Logo" class="logo">
+    </div>
+    <h1 class="brand">VIORE</h1>
+    <h2 class="tagline">The Intelligence Layer for Video</h2>
+    <p class="subline">Built for multimodal understanding — starting with video.</p>
+    <div class="buttons">
+      <a href="#" class="btn btn-outline">View on GitHub</a>
+      <a href="#" class="btn btn-filled">Join the Waitlist</a>
+    </div>
+  </div>
+  <script>
+  const logoContainer = document.querySelector('.logo-container');
+
+  document.addEventListener('mousemove', (e) => {
+    const x = (e.clientX / window.innerWidth - 0.5) * 2; // range -1 → 1
+    const y = (e.clientY / window.innerHeight - 0.5) * 2;
+
+    const rotateX = y * 6;  // tilt up/down
+    const rotateY = x * 6;  // tilt left/right
+    const translateX = x * 12;
+    const translateY = y * 12;
+
+    logoContainer.style.transform =
+      `rotateX(${rotateX}deg) rotateY(${rotateY}deg) translate(${translateX}px, ${translateY}px)`;
+  });
+
+  document.addEventListener('mouseleave', () => {
+    logoContainer.style.transform = 'rotateX(0deg) rotateY(0deg) translate(0, 0)';
+  });
+</script>
+
+</body>
+</html>

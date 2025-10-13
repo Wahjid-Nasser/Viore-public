@@ -11,6 +11,17 @@ Viore is the bridge between **perception and understanding** — a system design
 
 ---
 
+## Why Now
+
+Human communication has evolved faster than our tools to understand it.  
+We’ve moved from **reading to watching**, from essays to Reels, from blogs to podcasts.  
+Knowledge now flows through video, audio, and visual media — yet our ability to **search, digest, and reason** about these formats hasn’t kept pace.  
+
+While text remains structured and searchable, the majority of new information is locked inside streams of moving pixels and sound waves.  
+Viore exists to change that — to make the **video-first internet intelligible.**
+
+---
+
 ## Core Philosophy
 
 - **Meaning Over Modality:** Video is just the beginning. Viore unifies audio, text, and visual signals into one semantic graph.  
@@ -27,4 +38,5 @@ a platform that can:
 - Reason across modalities and timelines  
 - Surface patterns, narratives, and contradictions  
 
-The journey starts with video, but it ends with **understanding the full spectrum of media.**
+The journey starts with video — where the world’s attention now lives —  
+but it ends with **understanding the full spectrum of media.**
